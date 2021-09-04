@@ -1,21 +1,19 @@
 <?php
-$cui = $_POST["cui"];
-$nombre = $_POST["nombre"];
-$apellido = $_POST["apellido"];
-$fecha = $_POST["fecha"];
-$grupo = $_POST["grupo"];
+$correo = $_POST["correo"];
 $clave = $_POST["clave"];
 
 $servername = "localhost";
-$username = "bmazariegos";
-$password = "bmazariegos";
+$username = "rmorales";
+$password = "rmorales";
 $conn = mysqli_connect($servername, $username, $password);
 if (!$conn) {
 die("Fallo conectarse por: " . mysqli_connect_error());
 }
 
-$sql = "insert into bmazariegos.usuario1(cui,apellido1,nombre1,fecha,grupo,clave) values('".$cui."','".$apellido."','".$nombre."','".$fecha."','".$grupo."','".md5($clave)."');";
+$sql = "insert into rmorales.usuario(correo,clave) values('".$correo."','".md5($clave)."');";
 if ($conn->query($sql) === TRUE) {
 }
 $conn->close();
+
+echo "Se creo el usuario: $correo";
 ?>
